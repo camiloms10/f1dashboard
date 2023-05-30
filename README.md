@@ -164,9 +164,9 @@ To do ALL of the following report and dataset I used Power BI Desktop.
 <p align ="center">
 
 ![grab-landing-page](https://github.com/camiloms10/f1dashboard/blob/master/images/PBI-import-_1_.gif?raw=true)
+</p>
 
-
-* I've used the ODBC connection to import the SQLite database into Power BI, selecting each one of the tables and making sure the data types of the columns correspond to what they're meant to be (decimal number, whole number, text, etc.).
+I've used the ODBC connection to import the SQLite database into Power BI, selecting each one of the tables and making sure the data types of the columns correspond to what they're meant to be (decimal number, whole number, text, etc.).
 
 
 ### 2. Managing the model relationships
@@ -175,9 +175,10 @@ To do ALL of the following report and dataset I used Power BI Desktop.
 
 ![grab-landing-page](https://raw.githubusercontent.com/camiloms10/f1dashboard/master/images/Relationships.gif)
 
-<p align ="center">
+<p>
+
 Now I've set the relationships between the tables in order to follow a star model (as it should be in Power BI), where we find the fact table(s) in the center of the model and the dimension or catalog tables surrounding the fact table.
-</p>
+
 
 <p align ="left">
 The fact and dimension tables have been classified as follows...
@@ -197,36 +198,141 @@ The fact and dimension tables have been classified as follows...
 </p>
 
 
-### 3. Using all of 2021-2020 quantitative statistics
+### 3. Creating Model Key Measures
 
 <p align ="center">
 
+![grab-landing-page](https://raw.githubusercontent.com/camiloms10/f1dashboard/master/images/measures.gif)
 </p>
+
+After creating the model structure (steps 1 and 2), I started with the key measures and metrics of the report. 
+
+<p> When you talk about performance from the drivers and the constructors in Formula 1, you gotta take the following into account(divided in 2 main categories):
+</p>
+
+* Races:
+  * Points
+  * Race Wins
+  * Top 10s
+  * Positions Gained
+  * Fastest Laps
+* Qualifyings:
+  * Cars in Q2's
+  * Cars in Q3's
+  * Pole Positions
+
+### 4. Creating the report design
+
+<p>
+Main structure
+
+* Top section
+  * Filters: The filters pane opens and closes using buttons with bookmarks to show and select the data the user wants to analyze, the following are the main values from which users can filter data inside the report. <br>**This section has an interactive text box in which you can see exactly the filtered data in the report**
+    * Year
+    * Constructor
+    * Race Location (Circuit)
+    * Driver
+* Left section
+  * Page navigation: The report can be navigated with ease using the left section bar in which I selected buttons with specific icons depending on what the page is about.
+    * Summary
+    * Head2Head
+    * Top 10s
+    * Ranking
+  * Contact Links
+    * LinkedIn
+    * Portfolio
+</p>
+
+#### 4.1 Summary Page
+
 <p align ="center">
-<img src="images/quantitative_stats_model_error.png" width="400" height="300">
+
+![grab-landing-page](https://raw.githubusercontent.com/camiloms10/f1dashboard/master/images/Summary-Page.gif)
+</p>
+
+<p>
+
+<br>
+The Summary Page has the following main visuals that the user can interact with and analyze the data:
+
+* Total Points by Circuit Location
+* Podium Distribution by Constructor
+* Total Points by Period
+* Points per Race by Constructor
+
+</p>
+
+#### 4.2 Head to Head
+
 <p align ="center">
 
+![grab-landing-page](https://raw.githubusercontent.com/camiloms10/f1dashboard/master/images/H2H.gif)
 </p>
+
+<p>
+
+<br>
+The Head to Head page has bar charts that the user can interact with and analyze specifically between 2 drivers that they want to compare:
+
+* Qualifyings:
+  * Q2's
+  * Q3's
+  * Poles
+* Races:
+  * Top 10's
+  * Podiums
+  * Wins
 </p>
 
-
-
-### 4. Variables significance (p-value <.05)
+#### 4.3 Top 10s
 
 <p align ="center">
 
+![grab-landing-page](https://raw.githubusercontent.com/camiloms10/f1dashboard/master/images/Top10s.gif)
 </p>
+
+<p>
+
+<br>
+The Top 10s page has column charts containing the top 10 by constructor, season, driver and circuit.
+<br>
+<br>
+
+**The most interesting thing about this page is that you can select the metric you want to analyze in the bar charts using the top slicer and the bars will dynamically change depending on what you select**
+
+</p>
+
+#### 4.3 Ranking
 
 <p align ="center">
-<img src="images/significant_variables_error_distributions.png" width="400" height="300">
-<p align ="center">
 
-</p>
+![grab-landing-page](https://raw.githubusercontent.com/camiloms10/f1dashboard/master/images/Ranking.gif)
 </p>
 
+<p>
+
+<br>
+The idea behind the ranking page is to use the created metrics inside the model to classify and give a dynamic ranking to the drivers and constructors based on their performance. 
+<br>
+<br>
+This performance can be normalized in some way by using per race and per qualifyng metrics so we don't punish those that weren't that much in Formula 1. 
+<br>
+<br>
+Also, the dataset only contains qualifyings from 1994  in Formula 1 so I had to come up with some new way to rank the drivers based on solely race metrics.
+<br>
+<br>
+
+These are the weights of each metric depending if the driver had any qualifying data or not.
+
+<img src="images/Ranking weights.png" width="300" height="250">
+
+</p>
 
 ## Final Conclusions
 
+The F1 dashboard can be used to analyze in different ways the F1 dataset from kaggle, you can see the data summarized just to identify the main driver/constructor/year you want to analyze and then go deeper into the report with the rest of the pages.
+
+This development has been a real challenge since I could explore new ways to present and show the key metrics for the end user to take advantage of the data showed in it.
 
 
 See the [open issues](https://github.com/camiloms10/f1dashboard/issues) for a full list of proposed features (and known issues).
